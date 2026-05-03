@@ -1,0 +1,21 @@
+{
+  "name": "validate-xrechnung-action",
+  "version": "0.1.0",
+  "description": "GitHub Action: validate EU invoices via eleata Peppol API",
+  "main": "dist/index.js",
+  "private": true,
+  "scripts": {
+    "build": "ncc build src/main.ts -o dist --source-map --license licenses.txt",
+    "lint": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/glob": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@vercel/ncc": "^0.38.3",
+    "typescript": "^5.7.2"
+  }
+}

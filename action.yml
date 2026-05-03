@@ -1,0 +1,42 @@
+name: 'eleata Validate XRechnung'
+description: 'Validate EU invoices (Peppol/XRechnung/Factur-X/UBL) in CI/CD via the eleata Peppol API.'
+author: 'eleata'
+branding:
+  icon: 'check-circle'
+  color: 'blue'
+
+inputs:
+  files:
+    description: 'Glob pattern of XML files to validate (e.g. ./invoices/**/*.xml)'
+    required: true
+  format:
+    description: 'Invoice format: peppol-bis-3 | xrechnung-2.x | factur-x | ubl'
+    required: false
+    default: 'peppol-bis-3'
+  api-key:
+    description: 'Your eleata API key (evk_live_...)'
+    required: true
+  fail-fast:
+    description: 'Exit on first invalid file'
+    required: false
+    default: 'false'
+  report:
+    description: 'Generate per-file PR comment with errors'
+    required: false
+    default: 'true'
+  base-url:
+    description: 'Override API base URL (advanced)'
+    required: false
+    default: 'https://api.eleata.io'
+
+outputs:
+  valid-count:
+    description: 'Number of files that passed validation'
+  error-count:
+    description: 'Number of files that failed validation'
+  report-urls:
+    description: 'JSON array of public report URLs'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
