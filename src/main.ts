@@ -33,7 +33,7 @@ async function validateFile(
       "Content-Type": "application/xml",
       "User-Agent": "eleata-action/0.1.0",
     },
-    body: xmlBytes,
+    body: new Uint8Array(xmlBytes),
   });
   if (!r.ok) {
     const body = await r.text();
